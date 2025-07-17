@@ -2,14 +2,13 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import requests
 import os
-# from dotenv import load_dotenv
-# load_dotenv(override=True)
-# API_KEY = os.getenv("FMP_API_KEY")
+from dotenv import load_dotenv
+load_dotenv(override=True)
 
 app = Flask(__name__)
 CORS(app)  # 允许跨域，前端可直接请求
 
-API_KEY = os.environ.get("FMP_API_KEY")  # 推荐用环境变量存储API Key
+API_KEY = os.getenv("FMP_API_KEY")
 
 
 @app.route('/api/earnings')
