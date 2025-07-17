@@ -2,17 +2,14 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import requests
 import os
-from dotenv import load_dotenv
-
-# 加载 .env 文件中的环境变量
-# 这行代码会自动寻找同级目录下的 .env 文件
-load_dotenv(override=True)
-
+# from dotenv import load_dotenv
+# load_dotenv(override=True)
+# API_KEY = os.getenv("FMP_API_KEY")
 
 app = Flask(__name__)
 CORS(app)  # 允许跨域，前端可直接请求
 
-API_KEY = os.getenv("FMP_API_KEY")
+API_KEY = os.environ.get("FMP_API_KEY")  # 推荐用环境变量存储API Key
 
 
 @app.route('/api/earnings')
